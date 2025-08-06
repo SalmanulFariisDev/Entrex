@@ -1,16 +1,14 @@
-import { httpServer } from "./config/app";
+import app from "./app"; // import the app from app.ts
 import connectToDb from "./config/db";
 
-const port = process.env.PORT || 3008;
+const port = process.env.PORT || 5000;
 
-const startServer  = async(): Promise< void> =>{
-    
+const startServer = async (): Promise<void> => {
   await connectToDb();
-  const app = httpServer;
-  app.listen(port,() => {
-    console.log(`server is running on port ${port}`);
-    
-  })
-}
+  app.listen(port, () => {
+    console.log(`✅ Server running on port ${port}`);
+  });
+};
 
 startServer();
+
